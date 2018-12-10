@@ -136,7 +136,8 @@ $(document).ready(function () {
 (1) Cleaning the dataset<br />
 (2) Feature selection based on different approaches<br />
 (3) Model selection based on cross validation<br />
-(4) Predict the provided testset</p>
+(4) Out of sample error estimation<br />
+(5) Predict the provided testset</p>
 </div>
 <div id="cleaning-the-dataset" class="section level2">
 <h2>Cleaning the dataset</h2>
@@ -220,7 +221,7 @@ print(fs1)</code></pre>
 <pre><code>## classe ~ pitch_belt + yaw_belt + yaw_arm + gyros_arm_x + gyros_dumbbell_z + 
 ##     accel_dumbbell_z + magnet_dumbbell_y + magnet_dumbbell_z + 
 ##     roll_forearm + pitch_forearm + gyros_forearm_x
-## &lt;environment: 0x7fa0a4252758&gt;</code></pre>
+## &lt;environment: 0x7fb433067888&gt;</code></pre>
 <pre class="r"><code>var1 &lt;- as.data.frame(matrix(c(&quot;Method 1&quot;, paste(subset, collapse = &quot;,&quot;)),nrow = 1, ncol = 2))
 ### Use decision tree to see which variables are importance
 
@@ -244,7 +245,7 @@ print(fs1)</code></pre>
 ##     magnet_belt_z + magnet_dumbbell_x + accel_dumbbell_z + accel_dumbbell_x + 
 ##     magnet_belt_x + accel_forearm_x + accel_belt_x + magnet_belt_y + 
 ##     accel_belt_y
-## &lt;environment: 0x7fa0a31984e0&gt;</code></pre>
+## &lt;environment: 0x7fb431dd32d0&gt;</code></pre>
 <pre class="r"><code>var2 &lt;- as.data.frame(matrix(c(&quot;Method 2&quot;, paste(rownames(results), collapse = &quot;,&quot;)),nrow = 1, ncol = 2))
 #kable_styling(rbind(var1,var2))</code></pre>
 <p>The selected features for the first approaches contain <strong>11</strong> features. In the second approach, the first <strong>20</strong> features ranked according to importance were choosen. The selected features can be seen on the printed formula. They will further be used to evaluate different models based on cross validation</p>
@@ -354,6 +355,10 @@ All features
 </tbody>
 </table>
 </div>
+</div>
+<div id="out-of-samples-error" class="section level2">
+<h2>Out of samples error</h2>
+<p>The out of samples error was determined by (1-Accuracy) where the accuracy was estimated from the cross validation test. The error coressponds to the ratio of the number of misclassified case to the total number of observations. In this analysis, the out of samples error for the choosen model, i.e. random forest with 11 features, is <strong>0.011</strong></p>
 </div>
 <div id="predict-the-test-set" class="section level2">
 <h2>Predict the test set</h2>

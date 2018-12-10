@@ -2,7 +2,9 @@
 title: "Predicting Weight Lifting Exercise using Data collected by Activity Bands"
 author: "Duy Nguyen"
 date: "12/8/2018"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -23,7 +25,8 @@ This analysis explore the provided dataset and apply machine learning agorithm t
 (1) Cleaning the dataset  
 (2) Feature selection based on different approaches  
 (3) Model selection based on cross validation  
-(4) Predict the provided testset  
+(4) Out of sample error estimation  
+(5) Predict the provided testset  
 
 ## Cleaning the dataset
 
@@ -177,6 +180,11 @@ Acc <- c(cfm1$overall["Accuracy"],cfm2$overall["Accuracy"],cfm3$overall["Accurac
 names(Acc) <- c("Feature 1", "Feature 2", "All features")
 kable_styling(kable(Acc,col.names=c("Accuracy")), full_width = F)
 ```
+
+## Out of samples error
+
+The out of samples error was determined by (1-Accuracy) where the accuracy was estimated from the cross validation test. The error coressponds to the ratio of the number of misclassified case to the total number of observations. In this analysis, the out of samples error for the choosen model, i.e. random forest with 11 features, is **`r round(1-cfm1$overall["Accuracy"],3)`**  
+
 
 ## Predict the test set
 

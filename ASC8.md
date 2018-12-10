@@ -18,7 +18,8 @@ This analysis explore the provided dataset and apply machine learning agorithm t
 (1) Cleaning the dataset  
 (2) Feature selection based on different approaches  
 (3) Model selection based on cross validation  
-(4) Predict the provided testset  
+(4) Out of sample error estimation  
+(5) Predict the provided testset  
 
 ## Cleaning the dataset
 
@@ -256,6 +257,11 @@ kable_styling(kable(Acc,col.names=c("Accuracy")), full_width = F)
   </tr>
 </tbody>
 </table>
+
+## Out of samples error
+
+The out of samples error was determined by (1-Accuracy) where the accuracy was estimated from the cross validation test. The error coressponds to the ratio of the number of misclassified case to the total number of observations. In this analysis, the out of samples error for the choosen model, i.e. random forest with 11 features, is **0.011**  
+
 
 ## Predict the test set
 
